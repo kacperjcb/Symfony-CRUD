@@ -1,0 +1,110 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Janusz SZOP PL{% endblock %}
+
+{% block body %}
+<style>
+    #stripe {
+    font-size: 0;
+    }
+    button {
+        font-size: 14px; // Set font size that you need here
+    }
+    </style>
+
+
+
+
+    E-commerce u Janusza <br>
+    <div id="stripe">
+            <a class="btn btn-primary" href="{{ path('app_login') }}" role="button">Zaloguj sie</a>
+            <a class="btn btn-primary" href="{{ path('app_logout') }}" role="button">Wyloguj sie</a>
+    <br>
+
+    </div>
+
+    <img src="https://dinoanimals.pl/wp-content/uploads/2013/09/Nosacz-sundajski-9-670x440.jpg" width="335" height="220">
+
+    {% if (is_granted('ROLE_ADMIN'))%}  {# After successful log in we can see our crud. #}
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nazwa_produktu</th>
+                <th>Cena_produktu</th>
+                <th>Stan_magazynowy</th>
+                <th>Opis_produktu</th>
+                <th>Akcje</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        {% for crud in cruds %}
+            <tr>
+                <td>{{ crud.id }}</td>
+                <td>{{ crud.NazwaProduktu|capitalize }}</td>
+                <td>{{ crud.CenaProduktu }}</td>
+                <td>{{ crud.StanMagazynowy }}</td>
+                <td>{{ crud.OpisProduktu }}</td>
+                <td>
+                    <a href="{{ path('app_crud_show', {'id': crud.id}) }}">Pokaż</a>
+                    <a href="{{ path('app_crud_edit', {'id': crud.id}) }}">Edytuj</a>
+                    <a href="{{ path('app_crud_sell', {'id': crud.id}) }}">Sprzedaj</a>
+
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+        <a class="btn btn-primary" href="{{ path('app_crud_new') }}" role="button">Nowy produkt</a>
+
+
+   <form>
+
+       <div class="divy">
+        Wyszukaj produkt Pjoter bo nie widzę: <br>
+        <input name="search" value="{{search}}"/><button type="submit">Search</button>
+           </div>
+    </form>
+{%elseif (is_granted('ROLE_USER'))%}
+
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Nazwa produktu</th>
+                <th>Cena produktu</th>
+                <th>Stan Magazynowy</th>
+                <th>Opis produktu</th>
+                <th>Akcje</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            {% for crud in cruds %}
+                <tr>
+                    <td>{{ crud.NazwaProduktu|capitalize }}</td>
+                    <td>{{ crud.CenaProduktu }}</td>
+                    <td>{{ crud.Stanmagazynowy }}</td>
+                    <td>{{ crud.OpisProduktu }}</td>
+                    <td>
+                        <a href="{{ path('app_crud_sell', {'id': crud.id}) }}">Kup</a>
+
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="6">no records found</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+    {% else %}
+        <h1> Aby zobaczyć produkty musisz się zalogować </h1>
+
+    {% endif %}
+{% endblock %}

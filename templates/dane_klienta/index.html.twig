@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}DaneKlienta index{% endblock %}
+
+{% block body %}
+    {%if (is_granted('ROLE_ADMIN'))%}
+    <h1>Dane Klienta index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Imie</th>
+                <th>Nazwisko</th>
+                <th>Miasto</th>
+                <th>KodPocztowy</th>
+                <th>Adres</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for dane_klientum in dane_klientas %}
+            <tr>
+                <td>{{ dane_klientum.id }}</td>
+                <td>{{ dane_klientum.Imie|capitalize }}</td>
+                <td>{{ dane_klientum.Nazwisko|capitalize }}</td>
+                <td>{{ dane_klientum.Miasto|capitalize }}</td>
+                <td>{{ dane_klientum.KodPocztowy }}</td>
+                <td>{{ dane_klientum.Adres }}</td>
+                <td>
+                    <a href="{{ path('app_dane_klienta_show', {'id': dane_klientum.id}) }}">show</a>
+                    <a href="{{ path('app_dane_klienta_edit', {'id': dane_klientum.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">Brak wyników</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+
+        <a class="btn btn-primary" href="{{ path('app_crud_index') }}" role="button">Wróć do listy produktów</a>
+    {% endif %}
+{% endblock %}

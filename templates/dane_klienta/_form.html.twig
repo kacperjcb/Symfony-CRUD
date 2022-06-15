@@ -1,0 +1,29 @@
+{#{{ form_start(form) }}#}
+{#    {{ form_widget(form) }}#}
+
+
+{#{{ form_end(form) }}#}
+{{ form_start(form) }}
+
+Imie:
+{{ form_widget(form.Imie) }}
+<br>
+Nazwisko:
+{{ form_widget(form.Nazwisko) }}
+<br>
+Miasto:
+{{ form_widget(form.Miasto) }}
+<br>
+Kod pocztowy:
+{{ form_widget(form.KodPocztowy) }}
+<br>
+Adres:
+{{ form_widget(form.Adres) }}
+{{ form_widget(form.NumerZamowienia, {'value' : app.request.query.get("id")}) }}
+<br>
+<button class="btn btn-primary">{{ button_label|default('Kup') }}</button>
+{{ form_end(form) }}
+
+
+
+

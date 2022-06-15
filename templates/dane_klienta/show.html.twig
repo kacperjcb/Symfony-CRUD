@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}DaneKlienta{% endblock %}
+
+{% block body %}
+    <h1>DaneKlienta</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ dane_klientum.id }}</td>
+            </tr>
+            <tr>
+                <th>Imie</th>
+                <td>{{ dane_klientum.Imie }}</td>
+            </tr>
+            <tr>
+                <th>Nazwisko</th>
+                <td>{{ dane_klientum.Nazwisko }}</td>
+            </tr>
+            <tr>
+                <th>Miasto</th>
+                <td>{{ dane_klientum.Miasto }}</td>
+            </tr>
+            <tr>
+                <th>Kod Pocztowy</th>
+                <td>{{ dane_klientum.KodPocztowy }}</td>
+            </tr>
+            <tr>
+                <th>Adres</th>
+                <td>{{ dane_klientum.Adres }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_dane_klienta_index') }}">back to list</a>
+
+    <a href="{{ path('app_dane_klienta_edit', {'id': dane_klientum.id}) }}">edit</a>
+
+    {{ include('dane_klienta/_delete_form.html.twig') }}
+{% endblock %}

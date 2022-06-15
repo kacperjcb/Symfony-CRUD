@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New DaneKlienta{% endblock %}
+
+{% block body %}
+
+
+{%if (is_granted('ROLE_ADMIN'))%}
+    <h1>Dane do wysyłki (admin)</h1>
+
+    {{ include('dane_klienta/_form.html.twig') }}
+
+    <a href="{{ path('app_dane_klienta_index') }}">Sprawdź listę wszystkich zamówień</a>
+    {% elseif (is_granted('ROLE_USER'))%}
+        <h1>Dane do wysyłki (user)</h1>
+
+        {{ include('dane_klienta/_form.html.twig') }}
+{%else %}
+    Nie możesz zobaczyć tej strony ponieważ jesteś nie zalogowany
+    {% endif %}
+{% endblock %}
+
