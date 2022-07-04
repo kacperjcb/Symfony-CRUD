@@ -10,23 +10,51 @@
     button {
         font-size: 14px; // Set font size that you need here
     }
+
     </style>
 
 
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark" aria-label="Fifth navbar example">
+        <div class="container-fluid">
+            <a href="">
+                <img src="https://kacperglowacki1.000webhostapp.com/usmieszek.png" alt="logo" width="50" height="50">
+            </a>
+            <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample05" aria-controls="navbarsExample05" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon ms-auto"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarsExample05">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+                    <li class="nav-item"><a href="" class="nav-link active" aria-current="page">HOME</a></li>
 
 
-    E-commerce u Janusza <br>
-    <div id="stripe">
-            <a class="btn btn-primary" href="{{ path('app_login') }}" role="button">Zaloguj sie</a>
-            <a class="btn btn-primary" href="{{ path('app_logout') }}" role="button">Wyloguj sie</a>
-    <br>
+                    <li class="nav-item"><a href="{{ path('app_ostronie') }}" class="nav-link">O STRONIE</a></li>
 
-    </div>
 
-    <img src="https://dinoanimals.pl/wp-content/uploads/2013/09/Nosacz-sundajski-9-670x440.jpg" width="335" height="220">
+                    <li class="nav-item"><a href="{{ path('app_kontakt') }}" class="nav-link">KONTAKT</a></li>
+
+                </ul></div>
+            <div class="collapse navbar-collapse" id="navbarsExample05">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="btn btn-light" href="{{ path('app_login') }}" role="button">Zaloguj sie</a>
+                    </li>
+                    <li class="nav-item"><a class="btn btn-light" href="{{ path('app_logout') }}" role="button">Wyloguj sie</a>
+                    </li>
+                </ul></div>
+
+                </li>
+
+            </ul>
+
+        </div>
+    </nav>
+
+
+
 
     {% if (is_granted('ROLE_ADMIN'))%}  {# After successful log in we can see our crud. #}
-    <table class="table">
+    <table class="table table-striped table-dark">
         <thead>
             <tr>
                 <th>Id</th>
@@ -61,18 +89,20 @@
         </tbody>
     </table>
         <a class="btn btn-primary" href="{{ path('app_crud_new') }}" role="button">Nowy produkt</a>
+        <a class="btn btn-primary" href="{{ path('app_polaczone') }}" role="button">Lista zamowień</a>
+        <a class="btn btn-primary" href="{{ path('app_dane_klienta_index') }}" role="button"> Same dane klientów </a>
 
 
    <form>
 
        <div class="divy">
-        Wyszukaj produkt Pjoter bo nie widzę: <br>
-        <input name="search" value="{{search}}"/><button type="submit">Search</button>
+        Wyszukaj produkt po nazwie: <br>
+        <input name="search" value="{{search}}"/><br><button type="submit">Szukaj</button>
            </div>
     </form>
 {%elseif (is_granted('ROLE_USER'))%}
 
-        <table class="table">
+        <table class="table table-striped table-dark">
             <thead>
             <tr>
                 <th>Nazwa produktu</th>
@@ -107,4 +137,14 @@
         <h1> Aby zobaczyć produkty musisz się zalogować </h1>
 
     {% endif %}
+
+
+
+
+
+
+
+
+</table>
+
 {% endblock %}

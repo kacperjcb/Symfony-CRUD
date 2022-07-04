@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Crud{% endblock %}
+{% block title %}Produkt{% endblock %}
 
 {% block body %}
-    <h1>Crud</h1>
+    <h1>Produkt</h1>
 
     <table class="table">
         <tbody>
@@ -30,9 +30,9 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_crud_index') }}">back to list</a>
+    <a class="btn btn-primary" href="{{ path('app_crud_index') }}" role="button">Wróć do listy produktów</a>
 
-    <a href="{{ path('app_crud_edit', {'id': crud.id}) }}">edit</a>
+    <a class="btn btn-danger" href="{{ path('app_crud_edit', {'id': crud.id}) }}" role="button">Edytuj</a>
 
     {{ include('crud/_delete_form.html.twig') }}
 {% endblock %}

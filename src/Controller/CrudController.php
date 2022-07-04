@@ -28,9 +28,10 @@ class CrudController extends AbstractController
             'cruds' => ($search) ? $crudRepository->search($search) : $crudRepository->findAll(),
             'search' => $search,
             'sell' => $sell,
-
         ]);
+
     }
+
 
     #[Route('/new', name: 'app_crud_new', methods: ['GET', 'POST'])]
     public function new(Request $request, CrudRepository $crudRepository): Response
@@ -50,7 +51,27 @@ class CrudController extends AbstractController
             'form' => $form,
         ]);
     }
+    #[Route('/ostronie', name: 'app_ostronie', methods: ['GET'])]
+    public function ostronie()
+    {
+        return $this->render('ostronie.html.twig', [
 
+        ]);
+    }
+    #[Route('/zamowienia', name: 'app_polaczone', methods: ['GET'])]
+    public function polaczone(CrudRepository $crudRepository): Response
+    {
+        return $this->render('polaczonedane.html.twig', [
+            'polaczone'=>$crudRepository->selectAll(),
+        ]);
+    }
+    #[Route('/kontakt', name: 'app_kontakt', methods: ['GET'])]
+    public function kontakt()
+    {
+        return $this->render('kontakt.html.twig', [
+
+        ]);
+    }
     #[Route('/{id}', name: 'app_crud_show', methods: ['GET'])]
     public function show(Crud $crud): Response
     {
@@ -65,7 +86,7 @@ class CrudController extends AbstractController
         {
             $entityManager = $doctrine->getManager();
             $crud = $entityManager->getRepository(Crud::class)->find($id);
-//            $daneklienta= $entityManager->getRepository(DaneKlienta::class);
+
             if (!$crud) {
                 throw $this->createNotFoundException(
                     'No product found for id '.$id

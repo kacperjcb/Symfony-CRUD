@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    {% if (is_granted('ROLE_ADMIN'))%}
+    <table class="table table-striped table-dark">
+        <thead>
+        <tr>
+            <th>Imie</th>
+            <th>Nazwisko</th>
+            <th>Miasto</th>
+            <th>Kod_pocztowy</th>
+            <th>Adres</th>
+            <th>Nazwa_produktu</th>
+            <th>Opis_produktu</th>
+        </tr>
+        </thead>
+        <tbody>
+
+{% for crud in polaczone %}
+
+
+
+
+
+
+    <tr>
+        <td>{{crud.imie }}</td>
+        <td> {{crud.nazwisko}}</td>
+        <td> {{crud.miasto}}</td>
+        <td> {{crud.kod_pocztowy}}</td>
+        <td> {{crud.adres}}</td>
+        <td> {{crud.nazwa_produktu}}</td>
+        <td> {{crud.opis_produktu}}</td>
+    </tr>
+{% else %}
+    <tr>
+        <td colspan="6">no records found</td>
+    </tr>
+{% endfor %}
+</tbody>
+</table>
+
+ {% endif %}
+{% endblock %}

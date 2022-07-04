@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark" aria-label="Fifth navbar example">
+        <div class="container-fluid">
+            <a href="{{ path('app_crud_index') }}">
+                <img src="https://kacperglowacki1.000webhostapp.com/usmieszek.png" alt="logo" width="50" height="50">
+            </a>
+            <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample05" aria-controls="navbarsExample05" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon ms-auto"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarsExample05">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+                    <li class="nav-item"><a href="{{ path('app_crud_index') }}" class="nav-link" aria-current="page">HOME</a></li>
+
+
+                    <li class="nav-item"><a href="{{ path('app_ostronie') }}" class="nav-link">O STRONIE</a></li>
+
+
+                    <li class="nav-item"><a href="{{ path('app_kontakt') }}" class="nav-link  active">KONTAKT</a></li>
+
+                </ul></div>
+            <div class="collapse navbar-collapse" id="navbarsExample05">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="btn btn-light" href="{{ path('app_login') }}" role="button">Zaloguj sie</a>
+                    </li>
+                    <li class="nav-item"><a class="btn btn-light" href="{{ path('app_logout') }}" role="button">Wyloguj sie</a>
+                    </li>
+                </ul></div>
+
+
+        </div>
+
+    </nav>
+    <h3>Wszystkie problemy ze stroną proszę zgłaszać tutaj: <br>
+     email: kacperjcb@gmail.com
+        <h3>
+
+{% endblock %}

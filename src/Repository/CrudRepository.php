@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Crud;
+use App\Entity\DaneKlienta;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -47,5 +48,17 @@ class CrudRepository extends ServiceEntityRepository
 
         return $queryBuilder->getQuery()->execute();
     }
+    public function selectAll()
+    {
+        $conn = $this->getEntityManager()->getConnection();
+        $sql= 'select `imie`, `nazwisko`, `miasto`, `kod_pocztowy`, `adres`, `numer_zamowienia`,`nazwa_produktu`,`opis_produktu` from crud, dane_klienta where crud.id=dane_klienta.numer_zamowienia';
+        $stmt = $conn->prepare($sql);
+        $resultSet = $stmt->executeQuery();
 
+
+        return $resultSet->fetchAllAssociative();
+
+
+
+    }
 }
