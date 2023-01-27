@@ -27,7 +27,7 @@ class DaneKlienta
     #[ORM\Column(type: 'string', length: 255)]
     private $Adres;
 
-    #[ORM\Column(type: 'integer')]
+    #[ORM\Column(type: 'integer', nullable:true)]
     private $NumerZamowienia;
 
     public function getId(): ?int
@@ -100,7 +100,7 @@ class DaneKlienta
         return $this->NumerZamowienia;
     }
 
-    public function setNumerZamowienia(int $NumerZamowienia): self
+    public function setNumerZamowienia(?int $NumerZamowienia): self
     {
         $this->NumerZamowienia = $NumerZamowienia;
 

@@ -19,6 +19,7 @@ Kod pocztowy:
 <br>
 Adres:
 {{ form_widget(form.Adres) }}
+{# {{ form_widget(form.NumerZamowienia, {'value' : app.request.query.get("id")}) }} #}
 {{ form_widget(form.NumerZamowienia, {'value' : app.request.query.get("id")}) }}
 <br>
 <button class="btn btn-primary">{{ button_label|default('Kup') }}</button>
