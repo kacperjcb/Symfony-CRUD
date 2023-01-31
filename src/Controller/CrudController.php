@@ -99,11 +99,11 @@ class CrudController extends AbstractController
                     'No product found for id '.$id
                 );
             }
-            if ($crud->getStanMagazynowy()>= 1) {
-                $crud->setStanMagazynowy($crud->getStanMagazynowy() - 1);
-                $entityManager->flush();
-            }
-            elseif($crud->getStanMagazynowy()==0){
+            // if ($crud->getStanMagazynowy()>= 1) {
+            //     $crud->setStanMagazynowy($crud->getStanMagazynowy() - 1);
+            //     $entityManager->flush();
+            // }
+            if($crud->getStanMagazynowy()==0){
                 return $this->redirectToRoute('app_niedostepny');
             }
             return $this->redirectToRoute('app_dane_klienta_new', [

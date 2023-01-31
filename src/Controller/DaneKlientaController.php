@@ -1,13 +1,16 @@
 <?php
 
 namespace App\Controller;
+use App\Entity\Crud;
 use App\Entity\DaneKlienta;
 use App\Form\DaneKlientaType;
 use App\Repository\DaneKlientaRepository;
+use App\Repository\CrudRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Doctrine\Persistence\ManagerRegistry;
 
 #[Route('/dane/klienta')]
 class DaneKlientaController extends AbstractController
@@ -27,15 +30,21 @@ class DaneKlientaController extends AbstractController
         ]);
     }
     #[Route('/new', name: 'app_dane_klienta_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, DaneKlientaRepository $daneKlientaRepository): Response
+    public function new(ManagerRegistry $doctrine, Request $request, DaneKlientaRepository $daneKlientaRepository): Response
     {
         $daneKlientum = new DaneKlienta();
         $form = $this->createForm(DaneKlientaType::class, $daneKlientum);
         $form->handleRequest($request);
+        $entityManager = $doctrine->getManager();
         $id=($_GET["id"]);
+        $crud = $entityManager->getRepository(Crud::class)->find($id);
+        
         if ($form->isSubmitted() && $form->isValid()) {
             $daneKlientaRepository->add($daneKlientum, true);
-
+            if ($crud->getStanMagazynowy()>= 1) {
+                $crud->setStanMagazynowy($crud->getStanMagazynowy() - 1);
+                $entityManager->flush();
+            }
             return $this->redirectToRoute('app_dane_podziekowanie_index', [], Response::HTTP_SEE_OTHER);
         }
 
