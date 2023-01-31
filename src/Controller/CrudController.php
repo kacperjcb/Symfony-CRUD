@@ -58,6 +58,13 @@ class CrudController extends AbstractController
 
         ]);
     }
+    #[Route('/niedostepny', name: 'app_niedostepny', methods: ['GET'])]
+    public function niedostepny()
+    {
+        return $this->render('dane_klienta/brakproduktu.html.twig', [
+
+        ]);
+    }
     #[Route('/zamowienia', name: 'app_polaczone', methods: ['GET'])]
     public function polaczone(CrudRepository $crudRepository): Response
     {
@@ -92,16 +99,19 @@ class CrudController extends AbstractController
                     'No product found for id '.$id
                 );
             }
-
-            $crud->setStanMagazynowy($crud->getStanMagazynowy()-1);
-            $entityManager->flush();
-
-
+            if ($crud->getStanMagazynowy()>= 1) {
+                $crud->setStanMagazynowy($crud->getStanMagazynowy() - 1);
+                $entityManager->flush();
+            }
+            elseif($crud->getStanMagazynowy()==0){
+                return $this->redirectToRoute('app_niedostepny');
+            }
             return $this->redirectToRoute('app_dane_klienta_new', [
                 'id' => $crud->getId(),
-
             ]);
-
+            
+           
+           
     }
 }
     #[Route('/{id}/edit', name: 'app_crud_edit', methods: ['GET', 'POST'])]
