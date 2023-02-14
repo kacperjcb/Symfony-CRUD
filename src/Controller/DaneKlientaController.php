@@ -25,8 +25,9 @@ class DaneKlientaController extends AbstractController
     #[Route('/podziekowanie', name: 'app_dane_podziekowanie_index', methods: ['GET'])]
     public function podziekowanie()
     {
+        $imie=$_GET["imie"];
         return $this->render('dane_klienta/podziekowanie.html.twig', [
-
+            'imie'=>$imie,
         ]);
     }
     #[Route('/new', name: 'app_dane_klienta_new', methods: ['GET', 'POST'])]
@@ -45,7 +46,7 @@ class DaneKlientaController extends AbstractController
                 $crud->setStanMagazynowy($crud->getStanMagazynowy() - 1);
                 $entityManager->flush();
             }
-            return $this->redirectToRoute('app_dane_podziekowanie_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_dane_podziekowanie_index', ['imie'=>$daneKlientum->getImie()], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('dane_klienta/new.html.twig', [
