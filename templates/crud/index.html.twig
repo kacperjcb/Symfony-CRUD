@@ -36,11 +36,11 @@
                 </ul></div>
             <div class="collapse navbar-collapse" id="navbarsExample05">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                    <li class="nav-item"><a class="btn btn-light" href="{{ path('app_login') }}" role="button">Logowanie</a>
+                    <li class="nav-item"><a class="btn btn-light" href="{{ path('app_login') }}" role="button">Login</a>
                     </li>
-                    <li class="nav-item"><a class="btn btn-light" href="{{ path('app_register') }}" role="button">Rejestracja</a>
+                    <li class="nav-item"><a class="btn btn-light" href="{{ path('app_register') }}" role="button">Register</a>
                     </li>
-                    <li class="nav-item"><a class="btn btn-light" href="{{ path('app_logout') }}" role="button">Wylogowanie</a>
+                    <li class="nav-item"><a class="btn btn-light" href="{{ path('app_logout') }}" role="button">Logout</a>
                     </li>
                 </ul></div>
 
@@ -59,11 +59,11 @@
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Nazwa_produktu</th>
-                <th>Cena_produktu</th>
-                <th>Stan_magazynowy</th>
-                <th>Opis_produktu</th>
-                <th>Akcje</th>
+                <th>Product_Name</th>
+                <th>Product_Price</th>
+                <th>Stock_Level</th>
+                <th>Description</th>
+                <th>Options</th>
             </tr>
         </thead>
         <tbody>
@@ -71,14 +71,14 @@
         {% for crud in cruds %}
             <tr>
                 <td>{{ crud.id }}</td>
-                <td>{{ crud.NazwaProduktu|capitalize }}</td>
-                <td>{{ crud.CenaProduktu }}</td>
-                <td>{{ crud.StanMagazynowy }}</td>
-                <td>{{ crud.OpisProduktu }}</td>
+                <td>{{ crud.Product_Name|capitalize }}</td>
+                <td>{{ crud.Product_Price }}</td>
+                <td>{{ crud.Stock_Level }}</td>
+                <td>{{ crud.Description }}</td>
                 <td>
-                    <a href="{{ path('app_crud_show', {'id': crud.id}) }}">Pokaż</a>
-                    <a href="{{ path('app_crud_edit', {'id': crud.id}) }}">Edytuj</a>
-                    <a href="{{ path('app_crud_sell', {'id': crud.id}) }}">Sprzedaj</a>
+                    <a href="{{ path('app_crud_show', {'id': crud.id}) }}">Show</a>
+                    <a href="{{ path('app_crud_edit', {'id': crud.id}) }}">Edit</a>
+                    <a href="{{ path('app_crud_sell', {'id': crud.id}) }}">Sell</a>
 
                 </td>
             </tr>
@@ -90,14 +90,14 @@
         </tbody>
     </table>
         <a class="btn btn-primary" href="{{ path('app_crud_new') }}" role="button">Nowy produkt</a>
-        <a class="btn btn-primary" href="{{ path('app_polaczone') }}" role="button">Lista zamowień</a>
-        <a class="btn btn-primary" href="{{ path('app_dane_klienta_index') }}" role="button"> Same dane klientów </a>
+        <a class="btn btn-primary" href="{{ path('app_polaczone') }}" role="button">Order list</a>
+        <a class="btn btn-primary" href="{{ path('app_Client_Info_index') }}" role="button"> Customer Data </a>
 
 
    <form>
 
        <div class="divy">
-        Wyszukaj produkt po nazwie: <br>
+        Find by name <br>
         <input name="search" value="{{search}}"/><br><button type="submit">Szukaj</button>
            </div>
     </form>
@@ -106,23 +106,23 @@
         <table class="table table-striped table-dark">
             <thead>
             <tr>
-                <th>Nazwa produktu</th>
-                <th>Cena produktu</th>
-                <th>Stan Magazynowy</th>
-                <th>Opis produktu</th>
-                <th>Akcje</th>
+                <th>Product name</th>
+                <th>Price</th>
+                <th>Stock Level</th>
+                <th>Description</th>
+                <th>Options</th>
             </tr>
             </thead>
             <tbody>
 
             {% for crud in cruds %}
                 <tr>
-                    <td>{{ crud.NazwaProduktu|capitalize }}</td>
-                    <td>{{ crud.CenaProduktu }}</td>
-                    <td>{{ crud.Stanmagazynowy }}</td>
-                    <td>{{ crud.OpisProduktu }}</td>
+                    <td>{{ crud.Product_Name|capitalize }}</td>
+                    <td>{{ crud.Product_Price }}</td>
+                    <td>{{ crud.Stock_Level }}</td>
+                    <td>{{ crud.Description }}</td>
                     <td>
-                        <a href="{{ path('app_crud_sell', {'id': crud.id}) }}">Kup</a>
+                        <a href="{{ path('app_crud_sell', {'id': crud.id}) }}">Buy</a>
 
                     </td>
                 </tr>

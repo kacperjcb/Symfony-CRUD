@@ -3,7 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Crud;
-use App\Entity\DaneKlienta;
+use App\Entity\ClientInfo;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -40,18 +40,18 @@ class CrudRepository extends ServiceEntityRepository
         }
     }
 
-    public function search(?string $Nazwa_produktu)
+    public function search(?string $Product_Name)
     {
         $queryBuilder = $this->createQueryBuilder('c')
-            ->where('c.Nazwa_produktu LIKE :Nazwa_produktu')
-            ->setParameter('Nazwa_produktu', '%' . $Nazwa_produktu . '%');
+            ->where('c.Product_Name LIKE :Product_Name')
+            ->setParameter('Product_Name', '%' . $Product_Name . '%');
 
         return $queryBuilder->getQuery()->execute();
     }
     public function selectAll()
     {
         $conn = $this->getEntityManager()->getConnection();
-        $sql= 'select dane_klienta.`id`,`imie`, `nazwisko`, `miasto`, `kod_pocztowy`, `adres`, `numer_zamowienia`,`nazwa_produktu`,`opis_produktu` from crud, dane_klienta where crud.id=dane_klienta.numer_zamowienia';
+        $sql= 'select client_info.`id`,`Name`, `Surname`, `City`, `kod_pocztowy`, `Address`, `numer_zamowienia`,`Product_Name`,`Description` from crud, client_info where crud.id=client_info.numer_zamowienia';
         $stmt = $conn->prepare($sql);
         $resultSet = $stmt->executeQuery();
 

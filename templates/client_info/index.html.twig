@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}ClientInfo index{% endblock %}
+
+{% block body %}
+    {%if (is_granted('ROLE_ADMIN'))%}
+
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Surname</th>
+                <th>City</th>
+                <th>PostCode</th>
+                <th>Address</th>
+                <th>Options</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for client_info in client_info %}
+            <tr>
+                <td>{{ client_info.id }}</td>
+                <td>{{ client_info.Name|capitalize }}</td>
+                <td>{{ client_info.Surname|capitalize }}</td>
+                <td>{{ client_info.City|capitalize }}</td>
+                <td>{{ client_info.PostCode }}</td>
+                <td>{{ client_info.Address }}</td>
+                <td>
+                    <a href="{{ path('app_client_info_show', {'id': client_info.id}) }}">Show</a>
+                    <a href="{{ path('app_client_info_edit', {'id': client_info.id}) }}">Edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">Brak wyników</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+
+        <a class="btn btn-primary" href="{{ path('app_crud_index') }}" role="button">Back to list </a>
+    {% endif %}
+{% endblock %}

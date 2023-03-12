@@ -2,7 +2,7 @@
 
 namespace App\Form;
 
-use App\Entity\DaneKlienta;
+use App\Entity\ClientInfo;
 use App\Entity\CrudRepository;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
@@ -10,17 +10,17 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 
-class DaneKlientaType extends AbstractType
+class ClientInfoType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('Imie')
-            ->add('Nazwisko')
-            ->add('Miasto')
-            ->add('KodPocztowy')
-            ->add('Adres')
-            ->add('NumerZamowienia', HiddenType::class,[    
+            ->add('Name')
+            ->add('Surname')
+            ->add('City')
+            ->add('PostCode')
+            ->add('Address')
+            ->add('OrderNumber', HiddenType::class,[    
                 ]);
 
 
@@ -28,7 +28,7 @@ class DaneKlientaType extends AbstractType
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => DaneKlienta::class,
+            'data_class' => ClientInfo::class,
         ]);
 
     }

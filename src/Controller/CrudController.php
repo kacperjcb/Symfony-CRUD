@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Crud;
-use App\Entity\DaneKlienta;
+use App\Entity\ClientInfo;
 use App\Form\CrudType;
 use App\Repository\CrudRepository;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -61,7 +61,7 @@ class CrudController extends AbstractController
     #[Route('/niedostepny', name: 'app_niedostepny', methods: ['GET'])]
     public function niedostepny()
     {
-        return $this->render('dane_klienta/brakproduktu.html.twig', [
+        return $this->render('client_info/brakproduktu.html.twig', [
 
         ]);
     }
@@ -99,14 +99,14 @@ class CrudController extends AbstractController
                     'No product found for id '.$id
                 );
             }
-            // if ($crud->getStanMagazynowy()>= 1) {
-            //     $crud->setStanMagazynowy($crud->getStanMagazynowy() - 1);
+            // if ($crud->getProductLevel()>= 1) {
+            //     $crud->setProductLevel($crud->getProductLevel() - 1);
             //     $entityManager->flush();
             // }
-            if($crud->getStanMagazynowy()==0){
+            if($crud->getStock_Level()==0){
                 return $this->redirectToRoute('app_niedostepny');
             }
-            return $this->redirectToRoute('app_dane_klienta_new', [
+            return $this->redirectToRoute('app_client_info_new', [
                 'id' => $crud->getId(),
             ]);
             

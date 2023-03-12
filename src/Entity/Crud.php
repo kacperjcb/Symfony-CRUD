@@ -14,66 +14,66 @@ class Crud
     private $id;
 
     #[ORM\Column(type: 'string', length: 255)]
-    private $Nazwa_produktu;
+    private $Product_Name;
 
     #[ORM\Column(type: 'float')]
-    private $Cena_produktu;
+    private $Product_Price;
 
     #[ORM\Column(type: 'integer')]
-    private $Stan_magazynowy;
+    private $Stock_Level;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
-    private $Opis_produktu;
+    private $Description;
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getNazwaProduktu(): ?string
+    public function getProduct_Name(): ?string
     {
-        return $this->Nazwa_produktu;
+        return $this->Product_Name;
     }
 
-    public function setNazwaProduktu(string $Nazwa_produktu): self
+    public function setProduct_Name(string $Product_Name): self
     {
-        $this->Nazwa_produktu = $Nazwa_produktu;
+        $this->Product_Name = $Product_Name;
 
         return $this;
     }
 
-    public function getCenaProduktu(): ?float
+    public function getProduct_Price(): ?float
     {
-        return $this->Cena_produktu;
+        return $this->Product_Price;
     }
 
-    public function setCenaProduktu(float $Cena_produktu): self
+    public function setProduct_Price(float $Product_Price): self
     {
-        $this->Cena_produktu = $Cena_produktu;
+        $this->Product_Price = $Product_Price;
 
         return $this;
     }
 
-    public function getStanMagazynowy(): ?int
+    public function getStock_Level(): ?int
     {
-        return $this->Stan_magazynowy;
+        return $this->Stock_Level;
     }
 
-    public function setStanMagazynowy(int $Stan_magazynowy): self
+    public function setStock_Level(int $Stock_Level): self
     {
-        $this->Stan_magazynowy = $Stan_magazynowy;
+        $this->Stock_Level = $Stock_Level;
 
         return $this;
     }
 
-    public function getOpisProduktu(): ?string
+    public function getDescription(): ?string
     {
-        return $this->Opis_produktu;
+        return $this->Description;
     }
 
-    public function setOpisProduktu(?string $Opis_produktu): self
+    public function setDescription(?string $Description): self
     {
-        $this->Opis_produktu = $Opis_produktu;
+        $this->Description = $Description;
 
         return $this;
     }

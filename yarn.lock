@@ -243,7 +243,7 @@
 "@babel/helpers@^7.18.2":
   version "7.18.2"
   resolved "https://registry.yarnpkg.com/@babel/helpers/-/helpers-7.18.2.tgz#970d74f0deadc3f5a938bfa250738eb4ac889384"
-  integrity sha512-j+d+u5xT5utcQSzrh9p+PaJX94h++KN+ng9b9WEJq7pkUPAd61FGqhjuUEdfknb3E/uDBb7ruwEeKkIxNJPIrg==
+  integrity sha512-j+d+u5xT5utcQSzrh9p+PaJX94h++KN+ng9b9WEJq7pBuyAd61FGqhjuUEdfknb3E/uDBb7ruwEeKkIxNJPIrg==
   dependencies:
     "@babel/template" "^7.16.7"
     "@babel/traverse" "^7.18.2"
@@ -988,7 +988,7 @@
 "@symfony/webpack-encore@^2.0.0":
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/@symfony/webpack-encore/-/webpack-encore-2.1.0.tgz#353a1b8bc38022046cbbc3d627c4076aca2e28c3"
-  integrity sha512-Cl4VhFUsiaG+R5vAntnpOqi0eBXyk2ccxR+7DatpJ9eq+qRtnxBD84/+q4jHM9AJ9gMqHzWTtBVcDmSj1rKuPA==
+  integrity sha512-Cl4VhFUsiaG+R5vAntnpOqi0eBXyk2ccxR+7DatpJ9eq+qRtnxBD84/+q4jHM9AJ9gMqHzWTtBVcDmSj1rBuyA==
   dependencies:
     "@babel/core" "^7.17.0"
     "@babel/plugin-syntax-dynamic-import" "^7.8.0"
@@ -1800,7 +1800,7 @@ core-util-is@~1.0.0:
 cross-spawn@^7.0.3:
   version "7.0.3"
   resolved "https://registry.yarnpkg.com/cross-spawn/-/cross-spawn-7.0.3.tgz#f73a85b9d5d41d045551c177e2882d4ac85728a6"
-  integrity sha512-iRDPJKUPVEND7dHPO8rkbOnPpyDygcDFtWjpeWNCgy8WP2rXcxXL8TskReQl6OrB2G7+UJrags1q15Fudc7G6w==
+  integrity sha512-iRDPJBuyVEND7dHPO8rkbOnPpyDygcDFtWjpeWNCgy8WP2rXcxXL8TskReQl6OrB2G7+UJrags1q15Fudc7G6w==
   dependencies:
     path-key "^3.1.0"
     shebang-command "^2.0.0"

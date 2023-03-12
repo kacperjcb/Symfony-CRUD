@@ -2,26 +2,26 @@
 
 namespace App\Repository;
 
-use App\Entity\DaneKlienta;
+use App\Entity\ClientInfo;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @extends ServiceEntityRepository<DaneKlienta>
+ * @extends ServiceEntityRepository<ClientInfo>
  *
- * @method DaneKlienta|null find($id, $lockMode = null, $lockVersion = null)
- * @method DaneKlienta|null findOneBy(array $criteria, array $orderBy = null)
- * @method DaneKlienta[]    findAll()
- * @method DaneKlienta[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method ClientInfo|null find($id, $lockMode = null, $lockVersion = null)
+ * @method ClientInfo|null findOneBy(array $criteria, array $orderBy = null)
+ * @method ClientInfo[]    findAll()
+ * @method ClientInfo[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class DaneKlientaRepository extends ServiceEntityRepository
+class ClientInfoRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, DaneKlienta::class);
+        parent::__construct($registry, ClientInfo::class);
     }
 
-    public function add(DaneKlienta $entity, bool $flush = false): void
+    public function add(ClientInfo $entity, bool $flush = false): void
     {
         $this->getEntityManager()->persist($entity);
 
@@ -30,7 +30,7 @@ class DaneKlientaRepository extends ServiceEntityRepository
         }
     }
 
-    public function remove(DaneKlienta $entity, bool $flush = false): void
+    public function remove(ClientInfo $entity, bool $flush = false): void
     {
         $this->getEntityManager()->remove($entity);
 
@@ -40,7 +40,7 @@ class DaneKlientaRepository extends ServiceEntityRepository
     }
 
 //    /**
-//     * @return DaneKlienta[] Returns an array of DaneKlienta objects
+//     * @return ClientInfo[] Returns an array of ClientInfo objects
 //     */
 //    public function findByExampleField($value): array
 //    {
@@ -54,7 +54,7 @@ class DaneKlientaRepository extends ServiceEntityRepository
 //        ;
 //    }
 
-//    public function findOneBySomeField($value): ?DaneKlienta
+//    public function findOneBySomeField($value): ?ClientInfo
 //    {
 //        return $this->createQueryBuilder('d')
 //            ->andWhere('d.exampleField = :val')

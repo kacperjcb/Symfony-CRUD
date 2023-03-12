@@ -12,10 +12,10 @@ class CrudType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('Nazwa_produktu')
-            ->add('Cena_produktu')
-            ->add('Stan_magazynowy')
-            ->add('Opis_produktu')
+            ->add('Product_Name')
+            ->add('Product_Price')
+            ->add('Stock_Level')
+            ->add('Description')
 
         ;
     }
