@@ -28,19 +28,22 @@
                     <li class="nav-item"><a href="" class="nav-link active" aria-current="page">HOME</a></li>
 
 
-                    <li class="nav-item"><a href="{{ path('app_ostronie') }}" class="nav-link">O STRONIE</a></li>
+                    <li class="nav-item"><a href="{{ path('app_about') }}" class="nav-link">ABOUT</a></li>
 
 
-                    <li class="nav-item"><a href="{{ path('app_kontakt') }}" class="nav-link">KONTAKT</a></li>
+                    <li class="nav-item"><a href="{{ path('app_contact') }}" class="nav-link">CONTACT</a></li>
 
                 </ul></div>
             <div class="collapse navbar-collapse" id="navbarsExample05">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                    <li class="nav-item"><a class="btn btn-light" href="{{ path('app_login') }}" role="button">Login</a>
+              {% if (not is_granted('ROLE_USER'))%}       <li class="nav-item"><a class="btn btn-light" href="{{ path('app_login') }}" role="button">LOGIN</a>
                     </li>
-                    <li class="nav-item"><a class="btn btn-light" href="{{ path('app_register') }}" role="button">Register</a>
+                    <li class="nav-item"><a class="btn btn-light" href="{{ path('app_register') }}" role="button">REGISTER</a>
                     </li>
-                    <li class="nav-item"><a class="btn btn-light" href="{{ path('app_logout') }}" role="button">Logout</a>
+                         {% endif %}
+               {% if (is_granted('ROLE_USER'))%}      <li class="nav-item"><a class="btn btn-light" href="{{ path('app_logout') }}" role="button">LOGOUT</a>
+               
+               {% endif %}
                     </li>
                 </ul></div>
 
@@ -89,7 +92,7 @@
         {% endfor %}
         </tbody>
     </table>
-        <a class="btn btn-primary" href="{{ path('app_crud_new') }}" role="button">Nowy produkt</a>
+        <a class="btn btn-primary" href="{{ path('app_crud_new') }}" role="button">Create new Product</a>
         <a class="btn btn-primary" href="{{ path('app_polaczone') }}" role="button">Order list</a>
         <a class="btn btn-primary" href="{{ path('app_Client_Info_index') }}" role="button"> Customer Data </a>
 
@@ -135,7 +138,7 @@
         </table>
 
     {% else %}
-        <h1> Aby zobaczyć produkty musisz się zalogować </h1>
+        <h1> You have to Login if you want to see products. </h1>
 
     {% endif %}
 

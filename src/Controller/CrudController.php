@@ -51,10 +51,10 @@ class CrudController extends AbstractController
             'form' => $form,
         ]);
     }
-    #[Route('/ostronie', name: 'app_ostronie', methods: ['GET'])]
+    #[Route('/about', name: 'app_about', methods: ['GET'])]
     public function ostronie()
     {
-        return $this->render('ostronie.html.twig', [
+        return $this->render('about.html.twig', [
 
         ]);
     }
@@ -72,10 +72,10 @@ class CrudController extends AbstractController
             'polaczone'=>$crudRepository->selectAll(),
         ]);
     }
-    #[Route('/kontakt', name: 'app_kontakt', methods: ['GET'])]
-    public function kontakt()
+    #[Route('/contact', name: 'app_contact', methods: ['GET'])]
+    public function CONTACT()
     {
-        return $this->render('kontakt.html.twig', [
+        return $this->render('contact.html.twig', [
 
         ]);
     }

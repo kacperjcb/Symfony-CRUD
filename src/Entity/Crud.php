@@ -11,19 +11,19 @@ class Crud
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
-    private $id;
+    public $id;
 
     #[ORM\Column(type: 'string', length: 255)]
-    private $Product_Name;
+    public $Product_Name;
 
     #[ORM\Column(type: 'float')]
-    private $Product_Price;
+    public $Product_Price;
 
     #[ORM\Column(type: 'integer')]
-    private $Stock_Level;
+    public $Stock_Level;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
-    private $Description;
+    public $Description;
 
     public function getId(): ?int
     {
