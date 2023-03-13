@@ -52,24 +52,24 @@ class CrudController extends AbstractController
         ]);
     }
     #[Route('/about', name: 'app_about', methods: ['GET'])]
-    public function ostronie()
+    public function about()
     {
         return $this->render('about.html.twig', [
 
         ]);
     }
-    #[Route('/niedostepny', name: 'app_niedostepny', methods: ['GET'])]
-    public function niedostepny()
+    #[Route('/unavailable', name: 'app_unavailable', methods: ['GET'])]
+    public function unavailable()
     {
-        return $this->render('client_info/brakproduktu.html.twig', [
+        return $this->render('client_info/noproduct.html.twig', [
 
         ]);
     }
-    #[Route('/zamowienia', name: 'app_polaczone', methods: ['GET'])]
+    #[Route('/orders', name: 'app_orders', methods: ['GET'])]
     public function polaczone(CrudRepository $crudRepository): Response
     {
-        return $this->render('polaczonedane.html.twig', [
-            'polaczone'=>$crudRepository->selectAll(),
+        return $this->render('orders.html.twig', [
+            'orders'=>$crudRepository->selectAll(),
         ]);
     }
     #[Route('/contact', name: 'app_contact', methods: ['GET'])]
@@ -104,7 +104,7 @@ class CrudController extends AbstractController
             //     $entityManager->flush();
             // }
             if($crud->getStock_Level()==0){
-                return $this->redirectToRoute('app_niedostepny');
+                return $this->redirectToRoute('app_unavailable');
             }
             return $this->redirectToRoute('app_client_info_new', [
                 'id' => $crud->getId(),

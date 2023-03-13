@@ -11,7 +11,7 @@ class Crud
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
-    public $id;
+    private $id;
 
     #[ORM\Column(type: 'string', length: 255)]
     public $Product_Name;

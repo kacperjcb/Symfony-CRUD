@@ -51,7 +51,7 @@ class CrudRepository extends ServiceEntityRepository
     public function selectAll()
     {
         $conn = $this->getEntityManager()->getConnection();
-        $sql= 'select client_info.`id`,`Name`, `Surname`, `City`, `kod_pocztowy`, `Address`, `numer_zamowienia`,`Product_Name`,`Description` from crud, client_info where crud.id=client_info.numer_zamowienia';
+        $sql= 'select client_info.`id`,`Name`, `Surname`, `City`, `post_code`, `Address`, `order_number`,`Product_Name`,`Description` from crud, client_info where crud.id=client_info.order_number';
         $stmt = $conn->prepare($sql);
         $resultSet = $stmt->executeQuery();
 

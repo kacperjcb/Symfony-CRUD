@@ -8,7 +8,7 @@
             <th>Name</th>
             <th>Surname</th>
             <th>City</th>
-            <th>Kod_pocztowy</th>
+            <th>Zip Code</th>
             <th>Address</th>
             <th>Product_Name</th>
             <th>Description</th>
@@ -16,22 +16,20 @@
         </thead>
         <tbody>
 
-{% for crud in polaczone %}
-
-
+{% for order in orders %}
 
 
 
 
     <tr>
-        <td>{{crud.id }}</td>
-        <td>{{crud.Name }}</td>
-        <td> {{crud.Surname}}</td>
-        <td> {{crud.City}}</td>
-        <td> {{crud.kod_pocztowy}}</td>
-        <td> {{crud.Address}}</td>
-        <td> {{crud.Product_Name}}</td>
-        <td> {{crud.Description}}</td>
+        <td>{{order.id }}</td>
+        <td>{{order.Name }}</td>
+        <td> {{order.Surname}}</td>
+        <td> {{order.City}}</td>
+        <td> {{order.post_code}}</td>
+        <td> {{order.Address}}</td>
+        <td> {{order.Product_Name}}</td>
+        <td> {{order.Description}}</td>
     </tr>
 {% else %}
     <tr>
@@ -42,4 +40,5 @@
 </table>
 
  {% endif %}
+ <a class="btn btn-primary" href="{{ path('app_crud_index') }}" role="button">Back to list </a>
 {% endblock %}
